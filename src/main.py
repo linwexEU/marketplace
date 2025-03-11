@@ -1,5 +1,7 @@
-from fastapi import FastAPI 
+from fastapi import FastAPI
 
+from src.api import api_router
+from src.logging import configure_logging
 
 
 def create_app() -> FastAPI: 
@@ -8,3 +10,9 @@ def create_app() -> FastAPI:
 
 
 app = FastAPI()
+
+# configure the logging format
+configure_logging()
+
+# add all API routers
+app.include_router(api_router)
