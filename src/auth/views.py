@@ -4,13 +4,13 @@ from fastapi import HTTPException, status, Depends
 from fastapi.security import HTTPBasicCredentials, HTTPBasic 
 
 from src.auth.utils import verify_password
-from src.users.service import UsersServiceDep
+from src.users.service import UserServiceDep
 from src.users.models import Users
 
 security = HTTPBasic()
 
 
-async def get_current_user(credentials: Annotated[HTTPBasicCredentials, Depends(security)], users_service: UsersServiceDep): 
+async def get_current_user(credentials: Annotated[HTTPBasicCredentials, Depends(security)], users_service: UserServiceDep): 
     # Get info from credentials
     username = credentials.username 
     password = credentials.password
@@ -34,3 +34,6 @@ async def get_current_user(credentials: Annotated[HTTPBasicCredentials, Depends(
         )
     
     return Users(**user)
+
+
+CurrentUser = Annotated[Users, Depends(get_current_user)]

@@ -4,6 +4,7 @@ from pydantic import BaseModel
 class Products(BaseModel):
     # Required fields
     name: str 
+    uuid: str
     price: float
     image: bytes
     

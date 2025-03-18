@@ -18,6 +18,14 @@ class Settings(BaseSettings):
 
     MONGO_DB_HOST: str
 
+    CACHED_UUIDS_KEY: str
+
+    UPDATE_DB_TOPIC: str
+    UPDATE_CACHE_TOPIC: str
+
+    USERNAME: str
+    PASSWORD: str
+
     @property 
     def MONGO_DB_URL(self): 
         return f"mongodb://{self.MONGO_DB_HOST}/" 
