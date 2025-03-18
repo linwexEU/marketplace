@@ -9,7 +9,7 @@ def create_app() -> FastAPI:
     return app 
 
 
-app = FastAPI()
+app = create_app()
 
 # configure the logging format
 configure_logging()
