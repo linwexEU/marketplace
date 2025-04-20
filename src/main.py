@@ -1,26 +1,15 @@
 from fastapi import FastAPI
 
-from contextlib import asynccontextmanager
-
-from api import api_router
-from logging import configure_logging
-from redis.redis_client import RedisClient
-
-
-@asynccontextmanager 
-async def lifespan(app: FastAPI):
-    redis_client = RedisClient() 
-    redis_client.connect() 
-    yield 
-    redis_client.disconnet() 
+from src.api import api_router
+from src.logging import configure_logging
 
 
 def create_app() -> FastAPI: 
-    app = FastAPI(lifespan=lifespan) 
+    app = FastAPI() 
     return app 
 
 
-app = FastAPI()
+app = create_app()
 
 # configure the logging format
 configure_logging()
