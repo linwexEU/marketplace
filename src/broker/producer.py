@@ -1,9 +1,11 @@
 import json
 import logging
+from logger import configure_logging
 
 from aiokafka import AIOKafkaProducer 
 
 log = logging.getLogger(__name__) 
+configure_logging() 
 
 
 class KafkaProducerClient: 

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 from api import api_router
-from logging import configure_logging
+from logger import configure_logging
 
 
 def create_app() -> FastAPI: 

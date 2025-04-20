@@ -1,6 +1,7 @@
 import asyncio
 import json 
 import logging
+from logger import configure_logging
 import sys 
 
 from aiokafka import AIOKafkaConsumer 
@@ -10,7 +11,7 @@ from products.service import ProductSevice
 from redis_utils.redis_client import RedisClient
 
 log = logging.getLogger(__name__)
-
+configure_logging()
 
 class KafkaConsumerClient: 
     def __init__(self, topic: str): 

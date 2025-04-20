@@ -2,6 +2,7 @@ import uuid
 from fastapi import APIRouter 
 from fastapi_utils.cbv import cbv
 import logging
+from logger import configure_logging
 
 from auth.utils import get_password_hash
 from users.models import Users
@@ -9,8 +10,9 @@ from users.schemas import RegisterUser, RegisterUserPayload
 from users.service import UserServiceDep
 
 router = APIRouter() 
-log = logging.getLogger(__name__)
 
+log = logging.getLogger(__name__)
+configure_logging() 
 
 @cbv(router) 
 class UsersAPI:

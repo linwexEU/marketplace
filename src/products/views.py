@@ -11,12 +11,14 @@ from products.models import Products
 from products.schemas import CreateProductResponse, GetProducts, UpdateProduct, UpdateProductResponse, DeleteProductResponse
 from products.service import ProductSeviceDep 
 import logging 
+from logger import configure_logging
 from config import settings
 from utils import SendMessageToKafka 
 
 router = APIRouter()
-log = logging.getLogger(__name__)
 
+log = logging.getLogger(__name__)
+configure_logging()
 
 @cbv(router) 
 class ProductApi: 

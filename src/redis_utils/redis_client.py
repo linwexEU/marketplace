@@ -1,9 +1,11 @@
 import logging
+from logger import configure_logging
 from typing import Any 
 from redis.asyncio import Redis as AsyncRedis
 import asyncio 
 
 log = logging.getLogger(__name__) 
+configure_logging()
 
 
 class RedisClient: 
