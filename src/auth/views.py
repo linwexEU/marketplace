@@ -3,9 +3,9 @@ from typing import Annotated
 from fastapi import HTTPException, status, Depends 
 from fastapi.security import HTTPBasicCredentials, HTTPBasic 
 
-from src.auth.utils import verify_password
-from src.users.service import UserServiceDep
-from src.users.models import Users
+from auth.utils import verify_password
+from users.service import UserServiceDep
+from users.models import Users
 
 security = HTTPBasic()
 

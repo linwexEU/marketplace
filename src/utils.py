@@ -1,4 +1,4 @@
-from src.broker.producer import KafkaProducerClient
+from broker.producer import KafkaProducerClient
 
 
 class SendMessageToKafka: 

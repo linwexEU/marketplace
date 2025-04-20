@@ -1,0 +1,54 @@
+version: '3.7'
+services: 
+  marketplace: 
+    build: 
+      context: . 
+    ports: 
+      - 8000:8000
+    env_file:
+      - .env-non-dev
+    depends_on: 
+      redis: 
+        condition: service_started 
+      mongo_db: 
+        condition: service_started 
+      zookeeper: 
+        condition: service_started 
+      kafka: 
+        condition: service_started
+
+  redis: 
+    image: redis:latest 
+    container_name: redis_container 
+    ports:
+      - 6379:6379
+
+  mongo_db: 
+    image: mongo:latest
+
+    container_name: mongo_db_container
+
+  zookeeper: 
+    image: wurstmeister/zookeeper 
+    container_name: zookeeper_container 
+    ports: 
+      - 2181:2181 
+    restart: unless-stopped
+  
+  kafka: 
+    image: wurstmeister/kafka 
+    container_name: kafka_container 
+    ports: 
+      - 9092:9092
+      - 9093:9093 
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_CREATE_TOPICS: "update_db_topic:4:1,update_cache_topic:4:1"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    depends_on: 
+      - zookeeper
+    restart: unless-stopped

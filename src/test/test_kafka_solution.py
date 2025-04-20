@@ -4,9 +4,9 @@ import uuid
 
 import aiohttp 
 
-from src.config import settings
-from src.products.models import Products
-from src.products.service import ProductSevice
+from config import settings
+from products.models import Products
+from products.service import ProductSevice
 
 product_service = ProductSevice()
 

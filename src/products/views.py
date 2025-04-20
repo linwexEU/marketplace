@@ -5,14 +5,14 @@ from fastapi_utils.cbv import cbv
 import io
 
 import json
-from src.redis.redis_client import RedisClient
-from src.auth.views import CurrentUser
-from src.products.models import Products
-from src.products.schemas import CreateProductResponse, GetProducts, UpdateProduct, UpdateProductResponse, DeleteProductResponse
-from src.products.service import ProductSeviceDep 
+from redis_utils.redis_client import RedisClient
+from auth.views import CurrentUser
+from products.models import Products
+from products.schemas import CreateProductResponse, GetProducts, UpdateProduct, UpdateProductResponse, DeleteProductResponse
+from products.service import ProductSeviceDep 
 import logging 
-from src.config import settings
-from src.utils import SendMessageToKafka 
+from config import settings
+from utils import SendMessageToKafka 
 
 router = APIRouter()
 log = logging.getLogger(__name__)

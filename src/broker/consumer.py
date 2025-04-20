@@ -5,9 +5,9 @@ import sys
 
 from aiokafka import AIOKafkaConsumer 
 
-from src.config import settings
-from src.products.service import ProductSevice
-from src.redis.redis_client import RedisClient
+from config import settings
+from products.service import ProductSevice
+from redis_utils.redis_client import RedisClient
 
 log = logging.getLogger(__name__)
 

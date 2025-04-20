@@ -2,9 +2,9 @@ from fastapi import FastAPI
 
 from contextlib import asynccontextmanager
 
-from src.api import api_router
-from src.logging import configure_logging
-from src.redis.redis_client import RedisClient
+from api import api_router
+from logging import configure_logging
+from redis.redis_client import RedisClient
 
 
 @asynccontextmanager 

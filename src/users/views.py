@@ -3,10 +3,10 @@ from fastapi import APIRouter
 from fastapi_utils.cbv import cbv
 import logging
 
-from src.auth.utils import get_password_hash
-from src.users.models import Users
-from src.users.schemas import RegisterUser, RegisterUserPayload
-from src.users.service import UserServiceDep
+from auth.utils import get_password_hash
+from users.models import Users
+from users.schemas import RegisterUser, RegisterUserPayload
+from users.service import UserServiceDep
 
 router = APIRouter() 
 log = logging.getLogger(__name__)
